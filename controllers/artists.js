@@ -1,4 +1,4 @@
-var Artist = require('../models/artist');
+var Artist = require('../models/artists');
 
 exports.all = function (req, res) {
   Artist.all(function (err, docs) {
@@ -24,7 +24,7 @@ exports.create = function (req, res) {
   var artist = {
     name: req.body.name
   };
-    Artists.create(artist, function (err, result) {
+    Artist.create(artist, function (err, result) {
     if (err) {
       console.log(err);
       return res.sendStatus(500);
@@ -34,7 +34,8 @@ exports.create = function (req, res) {
 };
 
 exports.update = function (req, res) {
-  Artists.update(req.param.id, { name: req.body.name }, function (err, result) {
+  var newData = { name: req.body.name};
+  Artist.update(req.params.id, newData, function (err, result) {
     if (err) {
       console.log(err);
       return res.sendStatus(500);

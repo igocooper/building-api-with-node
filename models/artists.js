@@ -19,7 +19,7 @@ exports.create = function (artist, cb) {
   });
 };
 
-exports.update = function (artist, cb) {
+exports.update = function (id, newData, cb) {
   db.get().collection('artists').updateOne(
     { _id: ObjectID(id) },
     newData,
