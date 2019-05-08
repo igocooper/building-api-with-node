@@ -23,15 +23,15 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/views/index.html'));
 });
 
-app.get('/artists', artistsController.all);
+app.get('/api/artists', artistsController.all);
 
-app.get('/artists/:id', artistsController.findById);
+app.get('/api/artists/:id', artistsController.findById);
 
-app.post('/artists', artistsController.create);
+app.post('/api/artists', artistsController.create);
 
-app.put('/artists/:id', artistsController.update);
+app.put('/api/artists/:id', artistsController.update);
 
-app.delete('/artists/:id', artistsController.delete);
+app.delete('/api/artists/:id', artistsController.delete);
 
 db.connect('mongodb://localhost:27017/myapi', function (err) {
     if (err) {

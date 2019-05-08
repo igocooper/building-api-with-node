@@ -1,30 +1,55 @@
-const getAllArtists = (method, url, cb) => {
-    const Http = new XMLHttpRequest();
-    Http.open(method, url);
-    Http.send();
-    Http.onreadystatechange = function(e) {
-        if(this.readyState == 4 && this.status === 200) {
-            return cb(e, Http.responseText);
+
+const getArtists = (url) => {
+    const params = {
+        method: "GET",
+        header: {
+            "content-type": "application/json; charset=UTF-8"
         }
     }
+    return fetch(url, params)
+        .then((data) => data.json())
 }
 
-const createArtist = (method, url, data, cb) => {
-    const Http = new XMLHttpRequest();
-    Http.open(method, url);
-    Http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    Http.send(JSON.stringify(data));
-    Http.onreadystatechange = function(e) {
-        if(this.readyState == 4 && this.status === 200) {
-            return cb(e, Http.responseText);
-        }
-    }
-}
 
-getAllArtists('GET', 'http://localhost:3012/artists', (e, responseText) => {
-    console.log(responseText);
-});
 
-// createArtist('POST', 'http://localhost:3012/artists', {name: "David Guetta"}, (e, responseText) => {
-//     console.log(responseText);
-// });
+getArtists('/api/artists')
+    .then((json) => {
+        const cardDeck = document.querySelector('.card-deck');
+        const loading = document.querySelector('.loading');
+        json.forEach(artist => {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.style.width = "360px";
+
+            card.innerHTML = `
+                <div class="card-image">
+                <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                </figure>
+                </div>
+                <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                    <figure class="image is-48x48">
+                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                    </figure>
+                    </div>
+                    <div class="media-content">
+                    <p class="title is-4">${artist.name}</p>
+                    <p class="subtitle is-6">@johnsmith</p>
+                    </div>
+                </div>
+
+                <div class="content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                </div>
+                </div>
+            `;
+            cardDeck.appendChild(card);
+            loading.style.display = 'none';
+        });
+    })
+    .catch(err => {
+        console.log(err)
+    });
