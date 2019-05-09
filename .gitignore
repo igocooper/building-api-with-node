@@ -1,0 +1,25 @@
+#IDE's files
+.idea
+nbproject
+
+#vendors
+composer.phar
+vendor/
+node_modules
+
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+# vim
+*.vi
+*~
+*.lock
+*.out
+
+#cache
+libs/Translate/cache/

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <form action="/api/artists" method="POST" class="card" enctype="multipart/form-data">
+    <label>name</label>
+    <input type="text" name="name">
+    <label>photo</label>
+    <input type="file" id="photo" name="photo" accept="image/gif, image/png, image/jpeg">
+    <input type="submit" value="submit">
+  </form>
+  <img src="/uploads/7b4e4a66-24bf-4b05-837b-fd138a78a5e6.jpeg" alt="test photo">
+</body>
+</html>
