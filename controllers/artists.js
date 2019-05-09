@@ -15,22 +15,24 @@ exports.findById = function (req, res) {
     if (err) {
       console.log(err);
       return res.sendStatus(500);
-    }
+    }   
     res.send(doc);
   })
 };
 
 exports.create = function (req, res) {
-  var artist = {
-    name: req.body.name
-  };
+    var artist = {
+        name: req.body.name,
+        description: req.body.description,
+        photo: req.body.photo,
+    };
     Artist.create(artist, function (err, result) {
     if (err) {
-      console.log(err);
-      return res.sendStatus(500);
+        console.log(err);
+        return res.sendStatus(500);
     }
     res.send(artist);
-  })
+    })
 };
 
 exports.update = function (req, res) {

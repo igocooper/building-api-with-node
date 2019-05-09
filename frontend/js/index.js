@@ -2,8 +2,8 @@
 const getArtists = (url) => {
     const params = {
         method: "GET",
-        header: {
-            "content-type": "application/json; charset=UTF-8"
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
         }
     }
     return fetch(url, params)
@@ -11,6 +11,7 @@ const getArtists = (url) => {
 }
 
 
+const defaultDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Phasellus nec iaculis mauris. ';
 
 getArtists('/api/artists')
     .then((json) => {
@@ -21,10 +22,12 @@ getArtists('/api/artists')
             card.classList.add('card');
             card.style.width = "360px";
 
+            const photo = artist.photo && `uploads/${artist.photo}`;
+
             card.innerHTML = `
                 <div class="card-image">
-                <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                <figure class="image is-16by9">
+                    <img src="${photo || 'https://bulma.io/images/placeholders/1280x960.png'}" alt="Placeholder image">
                 </figure>
                 </div>
                 <div class="card-content">
@@ -41,8 +44,7 @@ getArtists('/api/artists')
                 </div>
 
                 <div class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                    ${artist.description || defaultDescription}<a>@bulmaio</a>.
                 </div>
                 </div>
             `;

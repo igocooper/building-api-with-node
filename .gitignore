@@ -7,6 +7,9 @@ composer.phar
 vendor/
 node_modules
 
+#uploads
+frontend/uploads
+
 # Numerous always-ignore extensions
 *.diff
 *.err
