@@ -11,8 +11,6 @@ const getArtists = (url) => {
 }
 
 
-const defaultDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.Phasellus nec iaculis mauris. ';
-
 getArtists('/api/artists')
     .then((json) => {
         const cardDeck = document.querySelector('.card-deck');
@@ -22,12 +20,10 @@ getArtists('/api/artists')
             card.classList.add('card');
             card.style.width = "360px";
 
-            const photo = artist.photo && `uploads/${artist.photo}`;
-
             card.innerHTML = `
                 <div class="card-image">
                 <figure class="image is-16by9">
-                    <img src="${photo || 'https://bulma.io/images/placeholders/1280x960.png'}" alt="Placeholder image">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
                 </figure>
                 </div>
                 <div class="card-content">
@@ -44,7 +40,7 @@ getArtists('/api/artists')
                 </div>
 
                 <div class="content">
-                    ${artist.description || defaultDescription}<a>@bulmaio</a>.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.Phasellus nec iaculis mauris. <a>@bulmaio</a>.
                 </div>
                 </div>
             `;

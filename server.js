@@ -21,11 +21,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'frontend')));
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/views/index.html'));
+    res.sendFile(views('index'));
 });
 
 app.get('/form', function (req, res) {
-    res.sendFile(path.join(__dirname + '/views/form.html'));
+    res.sendFile(views('form'));
 });
 
 app.get('/api/artists', artistsController.all);
@@ -33,8 +33,8 @@ app.get('/api/artists', artistsController.all);
 app.get('/api/artists/:id', artistsController.findById);
 
 app.post('/api/artists', 
-    photosController.upload, 
-    photosController.resize, 
+    photosController.upload,
+    photosController.resize,
     artistsController.create
 );
 

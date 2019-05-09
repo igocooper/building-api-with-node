@@ -21,6 +21,7 @@ form.addEventListener('submit', function(event) {
     if (element.type === 'submit') return;
     if (element.type === 'file') {
       artistData.append(element.name, element.files[0])
+      return;
     }
     const value = element.value; 
     artistData.append(element.name, value)

@@ -25,13 +25,14 @@ exports.create = function (req, res) {
         name: req.body.name,
         description: req.body.description,
         photo: req.body.photo,
+        avatar: req.body.avatar,
     };
     Artist.create(artist, function (err, result) {
-    if (err) {
-        console.log(err);
-        return res.sendStatus(500);
-    }
-    res.send(artist);
+        if (err) {
+            console.log(err);
+            return res.sendStatus(500);
+        }
+        res.send(artist);
     })
 };
 
