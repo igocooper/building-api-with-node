@@ -24,7 +24,6 @@ exports.resize = async (req, res, next) => {
             next(); // skip to next middleware
             return;
         }
-        console.log(req.file);
 
         const extension = req.file.mimetype.split('/')[1];
         req.body.photo = `${uuid.v4()}.${extension}`;

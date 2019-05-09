@@ -23,6 +23,10 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/views/index.html'));
 });
 
+app.get('/form', function (req, res) {
+    res.sendFile(path.join(__dirname + '/views/form.html'));
+});
+
 app.get('/api/artists', artistsController.all);
 
 app.get('/api/artists/:id', artistsController.findById);

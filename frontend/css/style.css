@@ -1,7 +1,9 @@
 .card-deck {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
+    margin: 0 auto;
+    width: 80%;
 }
 
 .card {
