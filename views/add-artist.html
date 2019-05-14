@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="box">
+      <form name="addArtist" action="/api/artists" method="POST" enctype="multipart/form-data">
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" type="text" name="name" placeholder="Name">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <input class="input" type="text" name="description" placeholder="Description">
+          </div>
+        </div>
+        <div class="field">
+          <div class="file is-primary">
+            <label class="file-label">
+              <input class="file-input" type="file" name="photo" accept="image/gif, image/png, image/jpeg">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Download photo
+                </span>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="file is-primary">
+            <label class="file-label">
+              <input class="file-input" type="file" name="avatar" accept="image/gif, image/png, image/jpeg">
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  Download avatar
+                </span>
+              </span>
+            </label>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="js/add-artist.js"></script>
+</body>
+
+</html>

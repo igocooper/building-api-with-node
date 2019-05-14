@@ -10,20 +10,48 @@ const getArtists = (url) => {
         .then((data) => data.json())
 }
 
+const deleteArtist = (url) => {
+    const params = {
+        method: "DELETE",
+    }
+    return fetch(url, params)
+}
+
+const cardDeck = document.querySelector('.card-deck');
+cardDeck.addEventListener('click', function (e) {
+    const element = e.target;
+    if(element.classList.contains('card-delete')) {
+        e.stopPropagation();
+        const card = element.parentElement;
+        const id = card.dataset.id;
+        deleteArtist(`/api/artists/${id}`)
+            .then(() => {
+                card.innerHTML="";
+                card.remove();
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+    }
+})
+
 
 getArtists('/api/artists')
     .then((json) => {
-        const cardDeck = document.querySelector('.card-deck');
+
         const loading = document.querySelector('.loading');
         json.forEach(artist => {
             const card = document.createElement('div');
             card.classList.add('card');
             card.style.width = "360px";
 
+            const photoSrc = artist.photo ? `/uploads/${artist.photo}` : "https://bulma.io/images/placeholders/1280x960.png"
+            card.dataset.id = artist._id;
             card.innerHTML = `
+                <span class="card-delete">╳</span>
                 <div class="card-image">
                 <figure class="image is-16by9">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                    <img src="${photoSrc}" alt="Placeholder image">
                 </figure>
                 </div>
                 <div class="card-content">

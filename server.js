@@ -24,8 +24,8 @@ app.get('/', function (req, res) {
     res.sendFile(views('index'));
 });
 
-app.get('/form', function (req, res) {
-    res.sendFile(views('form'));
+app.get('/add-artist', function (req, res) {
+    res.sendFile(views('add-artist'));
 });
 
 app.get('/api/artists', artistsController.all);

@@ -8,4 +8,19 @@
 
 .card {
     margin: 5px;
+    position: relative;
+}
+
+.card-delete {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: inline-block;
+    z-index: 10;
+    cursor: pointer;
+}
+
+.container {
+    margin: 100px auto;
+    width: 600px;
 }
