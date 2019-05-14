@@ -6,6 +6,7 @@ var path = require('path');
 
 var db = require('./db');
 var artistsController = require('./controllers/artists');
+var photosController = require('./controllers/photos');
 
 var app = express();
 
@@ -20,18 +21,22 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'frontend')));
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/views/index.html'));
+    res.sendFile(views('index'));
 });
 
 app.get('/form', function (req, res) {
-    res.sendFile(path.join(__dirname + '/views/form.html'));
+    res.sendFile(views('form'));
 });
 
 app.get('/api/artists', artistsController.all);
 
 app.get('/api/artists/:id', artistsController.findById);
 
-app.post('/api/artists', artistsController.create);
+app.post('/api/artists', 
+    photosController.upload,
+    photosController.resize,
+    artistsController.create
+);
 
 app.put('/api/artists/:id', artistsController.update);
 
