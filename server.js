@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 var path = require('path');
+var cors = require('cors')
 
 var db = require('./db');
 var artistsController = require('./controllers/artists');
@@ -12,6 +13,11 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use(cors({
+    origin: 'http://igocooper.com:3000',
+    optionsSuccessStatus: 200 
+}));
 
  const views = (fileName) => {
      return path.join(__dirname + `/views/${fileName}.html`);
